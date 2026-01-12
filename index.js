@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-registerFont('./Montserrat-Bold.ttf', { 
+registerFont('./Gotham-Bold.ttf', { 
   family: 'Montserrat', 
   weight: 'bold',
   style: 'normal'
@@ -45,11 +45,11 @@ app.get('/health', (req, res) => {
 });
 
 function getDonationEmoji(amount) {
-    if (amount >= 10000) return '<:starfall:1413292844575227944>';
-    if (amount >= 1000) return '<:smite:1413292959213944882>';
-    if (amount >= 100) return '<:Nuke:1413293038528106566>';
-    if (amount >= 10) return '<:blimp:1413292777076293673>';
-    if (amount >= 5) return '<:sign:1435629258566406164>';
+    if (amount >= 10000000) return '<:starfall2:1460186544647311380>';
+    if (amount >= 1000000) return '<:smate:1460186630802505869>';
+    if (amount >= 100000) return '<:gluxznuke:1460186431677923391>';
+    if (amount >= 10000) return '<:blimp:1413292777076293673>';
+    if (amount >= 5000) return '<:sign:1435629258566406164>';
     return '<:sign:1435629258566406164>';
 }
 
@@ -58,11 +58,11 @@ function formatCommas(number) {
 }
 
 function getColor(robux) {
-    if (robux >= 10000) return '#FB0505';
-    if (robux >= 1000) return '#EF1085';
-    if (robux >= 100) return '#FA04F2';
-    if (robux >= 10) return '#01d9FF';
-    if (robux >= 5) return '#FF8801';
+    if (robux >= 10000000) return '#FB0505';
+    if (robux >= 1000000) return '#EF1085';
+    if (robux >= 100000) return '#FA04F2';
+    if (robux >= 10000) return '#01d9FF';
+    if (robux >= 5000) return '#FF8801';
     return '#00FF00';
 }
 
@@ -280,7 +280,7 @@ app.post('/donation', async (req, res) => {
 
         const channel = await client.channels.fetch('1368454360710905961');
         await channel.send({
-            content: `${getDonationEmoji(Amount)} \`@${donatorDisplayName}\` donated **<:robuxok:1435629815079370902>${formatCommas(Amount)} Robux** to \`@${raiserDisplayName}\``,
+            content: `${getDonationEmoji(Amount)} \`@${donatorDisplayName}\` donated **<:small:1460186321778774107>${formatCommas(Amount)} Robux** to \`@${raiserDisplayName}\``,
             embeds: [{
                 color: parseInt(getColor(Amount).replace('#', ''), 16),
                 image: { url: "attachment://donation.png" },
